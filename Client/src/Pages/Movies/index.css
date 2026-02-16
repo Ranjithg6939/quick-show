@@ -1,0 +1,66 @@
+.movie-now-show {
+  position: relative;          
+  margin-top: 160px;          
+  margin-bottom: 240px;       
+  padding-left: 24px;          
+  padding-right: 24px;
+  overflow: hidden;
+  min-height: 80vh;           
+}
+
+
+@media (min-width: 768px) {
+  .movie-now-show {
+    padding-left: 64px;        
+    padding-right: 64px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .movie-now-show {
+    padding-left: 160px;       
+    padding-right: 160px;
+  }
+}
+
+
+@media (min-width: 1280px) {
+  .movie-now-show {
+    padding-left: 176px;       
+    padding-right: 176px;
+  }
+}
+
+.nowshoing-heading {
+  font-size: 20px;  
+  font-weight: 500;  
+  margin-top: 16px;  
+  margin-bottom: 16px; 
+}
+
+.showing-movie {
+  display: flex;       
+  flex-wrap: wrap;      
+  gap: 32px;            
+}
+
+@media (max-width: 640px) {
+  .showing-movie {
+    justify-content: center;
+  }
+}
+
+.no-movie-container {
+  display: flex;           
+  flex-direction: column;   
+  align-items: center;      
+  justify-content: center;  
+  height: 100vh;            
+}
+
+.no-movie {
+  font-size: 30px;   
+  font-weight: 700;   
+  text-align: center; 
+}
+

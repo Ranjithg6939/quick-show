@@ -1,0 +1,12 @@
+.blur-container {
+  position: absolute;
+  z-index: -1;              
+  width: 232px;
+  height: 232px;
+  border-radius: 50%;        
+
+  
+  background-color: #ec06307a; 
+
+  filter: blur(64px);       
+}

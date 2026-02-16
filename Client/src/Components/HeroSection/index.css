@@ -1,0 +1,116 @@
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+  min-height: 100vh;
+  background-image: url("/backgroundImage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+@media (min-width: 768px) {
+  .hero-container {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .hero-container {
+    padding-left: 144px;
+    padding-right: 144px;
+  }
+}
+
+
+.marvel-logo {
+  width: 140px;
+  height: auto;
+}
+
+
+.movie-name {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 56px;
+  max-width: 400px;
+  color: #ffffff;
+}
+
+
+
+.movie-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #d1d5db; 
+  font-size: 14px;
+  flex-wrap: wrap; 
+}
+
+
+.movie-genre {
+  white-space: nowrap;
+}
+
+
+.movie-year,
+.movie-duration {
+  display: flex;
+  align-items: center;   
+  gap: 4px;
+  line-height: 18px;     
+}
+
+.movie-year span,
+.movie-duration span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.cal-icon {
+  width: 18px;
+  height: 16px;
+}
+.movie-desc {
+  max-width: 600px;      
+  color: #d1d5db;       
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 12px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.arrow-icon {
+  text-align: center;
+  width: 20px;   
+  height: 20px;  
+}
+.explore-btn{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color:   #F84565;
+  color: #ffffff;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width:180px;
+}
+
+.explore-btn:hover {
+  background-color:    #f66b82;
+}
+
+

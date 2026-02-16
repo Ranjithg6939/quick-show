@@ -1,0 +1,264 @@
+
+.now-playing-movie {
+  margin-top: 40px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+
+.add-show-container {
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+
+
+.movie-poster-container {
+  position: relative;
+  width: 160px;     
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+
+.movie-poster-container:hover {
+  transform: translateY(-8px);
+}
+
+.movie-poster-header {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;   
+}
+
+
+
+.votes-count-header {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.icon-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #9CA3AF;
+}
+
+.icon-star {
+  width: 16px;
+  height: 16px;
+  color: #F84565;
+  fill: #F84565;
+}
+
+
+.check-mark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F84565;
+  height: 24px;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.check-icon {
+  width: 16px;
+  height: 16px;
+  color: #fff;
+}
+
+
+.movie-name {
+  font-weight: 500;
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.release-date {
+  color: #9CA3AF;
+  font-size: 14px;
+}
+
+
+.movie-input {
+  margin-top: 20px;
+}
+
+.input-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.price-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #4b5563;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.show-currency {
+  color: #9CA3AF;
+  font-size: 14px;
+}
+
+.show-input,
+.date-time-input {
+  outline: none;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+.show-input::placeholder,
+.date-time-input::placeholder {
+  color: #9CA3AF;
+  opacity: 1;
+}
+
+
+.date-input {
+  margin-top: 24px;
+   color: rgba(255, 255, 255, 0.9);
+}
+
+.date-input-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.time-header {
+  display: inline-flex;
+  gap: 16px;
+  border: 1px solid #4B5563;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+
+.add-time-btn {
+  background-color: rgba(var(--colour-primary-rgb), 0.85);
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.25s ease;
+}
+
+.add-time-btn:hover {
+  background-color: var(--colour-primary);
+}
+
+
+.display-container {
+  margin-top: 24px;
+}
+
+.slected-date-time {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+.date-time-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.date-time-list > * + * {
+  margin-top: 12px;
+}
+
+.display-date {
+  font-weight: 500;
+}
+
+
+.diplay-time {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.time-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--colour-primary);
+  padding: 4px 6px;
+  border-radius: 4px;
+  background: rgba(var(--colour-primary-rgb), 0.05);
+}
+
+
+.delete-icon {
+  margin-left: 8px;
+  color: #ef4444;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.delete-icon:hover {
+  color: #b91c1c;
+}
+
+
+.date-time-input::-webkit-calendar-picker-indicator {
+  filter: invert(1); 
+  cursor: pointer;
+}
+
+.add-show {
+  background-color: #F84565; 
+  color: #ffffff;
+  padding: 8px 32px;   
+  margin-top: 24px;    
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-show:hover {
+  background-color: rgba(248, 69, 101, 0.9); 
+}

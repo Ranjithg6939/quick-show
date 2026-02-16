@@ -1,0 +1,21 @@
+.layout-header {
+  display: flex;
+}
+
+.outlet-container {
+  flex: 1;
+  padding-left: 16px;   
+  padding-right: 16px;
+  padding-top: 40px;    
+  padding-bottom: 40px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+
+@media (min-width: 768px) {
+  .outlet-container {
+    padding-left: 40px;  
+    padding-right: 40px;
+  }
+}

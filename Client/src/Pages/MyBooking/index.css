@@ -1,0 +1,139 @@
+.mybooking-container {
+  position: relative;
+  padding-left: 24px;   
+  padding-right: 24px;  
+  padding-top: 120px;   
+  min-height: 80vh;
+}
+
+@media (min-width: 768px) {
+  .mybooking-container {
+    padding-left: 64px;   
+    padding-right: 64px;  
+    padding-top: 160px;   
+  }
+}
+
+@media (min-width: 1024px) {
+  .mybooking-container {
+    padding-left: 160px;  
+    padding-right: 160px; 
+  }
+}
+
+.my-booking-text {
+  font-size: 24px;     
+  font-weight: 600;     
+  margin-bottom: 16px;  
+}
+
+.booking-container {
+  display: flex;
+  flex-direction: column;     
+  justify-content: space-between;
+  background-color: rgba(var(--colour-primary-rgb), 0.08); 
+  border: 1px solid rgba(var(--colour-primary-rgb), 0.20); 
+  margin-top: 16px;          
+  padding: 8px;                
+  max-width: 768px;   
+  height: 20vh;         
+}
+
+@media (min-width: 768px) {
+  .booking-container {
+    flex-direction: row;      
+  }
+}
+
+.booking-movie-image {
+  display: flex;
+  flex-direction: column; 
+}
+
+
+@media (min-width: 768px) {
+  .booking-movie-image {
+    flex-direction: row;
+  }
+}
+
+.booking-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;   
+  object-fit: cover;     
+  object-position: bottom; 
+  border-radius: 8px;    
+}
+
+
+@media (min-width: 768px) {
+  .booking-image {
+    max-width: 45%;
+  }
+}
+
+
+.booking-title-container {
+  display: flex;       
+  flex-direction: column; 
+  padding: 16px;        
+}
+
+.booking-title {
+  font-size: 18px;   
+  font-weight: 600;      
+}
+
+.movie-total-time {
+  color: #9ca3af;   
+  font-size: 14px;  
+  margin-top: auto;
+}
+
+.booking-amount-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px; 
+}
+
+
+@media (min-width: 768px) {
+  .booking-amount-container {
+    align-items: flex-end; 
+    text-align: right;  
+  }
+}
+
+.price-header{
+  display: flex;
+  align-items: center; 
+  gap: 16px;
+
+}
+.booking-amount {
+  font-size: 24px;      
+  font-weight: 600;     
+  margin-bottom: 12px; 
+}
+
+.pay-button {
+  background-color: var(--colour-primary); 
+  padding: 6px 16px;       
+  margin-bottom: 12px;    
+  font-size: 14px;         
+  font-weight: 500;        
+  border-radius: 25px;  
+  cursor: pointer;        
+  border: none;
+  color: white;
+}
+
+.total-seat-container {
+  font-size: 14px; 
+}
+
+.seat-count {
+  color: #9ca3af; 
+}

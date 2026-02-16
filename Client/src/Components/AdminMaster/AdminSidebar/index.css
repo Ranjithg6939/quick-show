@@ -1,0 +1,154 @@
+
+.admin-sidebar {
+  height: calc(100vh - 64px);  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32px;
+  width: 100%;
+  max-width: 52px;             
+  border-right: 1px solid rgba(209, 213, 219, 0.2); 
+  border-top: 1px solid rgba(209, 213, 219, 0.2);
+  font-size: 14px;
+}
+
+
+@media (min-width: 768px) {
+  .admin-sidebar {
+    max-width: 240px;         
+  }
+}
+
+
+.user-image {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+}
+
+
+@media (min-width: 768px) {
+  .user-image {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+
+.user-name {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+
+@media (max-width: 767px) {
+  .user-name {
+    display: none;
+  }
+}
+
+
+.admin-nav-link {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+
+.nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0;
+  color: #9ca3af; 
+  text-decoration: none;
+  margin-top: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+
+@media (min-width: 768px) {
+  .nav-link {
+    padding-left: 40px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .nav-link {
+    justify-content: center;
+  }
+}
+
+
+.nav-link:first-child {
+  margin-top: 24px;
+}
+
+
+.nav-link.active {
+  background-color: rgba(248, 69, 101, 0.15); 
+  color: #f84565; 
+}
+
+
+.nav-link:hover {
+  background-color: rgba(248, 69, 101, 0.08);
+  color: #f84565;
+}
+
+
+.link-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+
+.link-name {
+  display: inline;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+@media (max-width: 767px) {
+  .link-name {
+    display: none;
+  }
+}
+
+
+.nav-indicator {
+  width: 6px;
+  height: 40px;
+  border-radius: 4px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.nav-indicator.active {
+  background-color: #f84565;
+}
+
+
+@media (max-width: 767px) {
+  .nav-indicator {
+    display: none;
+  }
+}

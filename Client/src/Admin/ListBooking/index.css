@@ -1,0 +1,28 @@
+.list-booking-container {
+  max-width: 896px;   
+  margin-top: 24px;  
+  overflow-x: auto;   
+}
+
+.list-booking-table {
+  width: 100%;              
+  border-collapse: collapse;
+  border-radius: 6px;       
+  overflow: hidden;        
+  white-space: nowrap;      
+}
+
+.table-row {
+  background-color: rgba(248, 69, 102, 0.245); 
+  text-align: left;                           
+  color: #FFFFFF;                             
+}
+
+.table-header {
+  padding: 8px;          
+  font-weight: 500;    
+}
+
+.table-header:first-child {
+  padding-left: 20px;
+}
