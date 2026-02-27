@@ -1,44 +1,58 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
-import { dummyBookingData } from "../../assets/assets";
 import Loading from "../../Components/Loading";
 import BlurCircle from "../../Components/BlurCircle";
 import TimeFormate from "../../Library/TimeFormate";
 import { DateFormat } from "../../Library/DateFormate";
+import { useAppContext } from "../../context/AppContext";
+import { Link } from "react-router-dom";
 
 const MyBooking = () => {
   const currency = import.meta.env.VITE_CURRENCY;
+
+  const { axios, getToken, user, image_base_url } = useAppContext();
 
   const [bookings, setBookings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const getMyBookings = async () => {
-    setBookings(dummyBookingData);
-    setIsLoading(false);
+    try {
+      const { data } = await axios.get("/api/user/booking", {
+        headers: { Authorization: `Bearer ${await getToken()}` },
+        
+      });
+
+      if (data.success) {
+        setBookings(data.bookings);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    getMyBookings();
-  }, []);
+    if (user) {
+      getMyBookings();
+    }
+  }, [user]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  return (
+  return !isLoading ? (
     <div className="mybooking-container">
       <BlurCircle top="100px" left="100px" />
-      <BlurCircle bottom="0px" left="600px" />
-      <div></div>
-
+      <div>
+        <BlurCircle bottom="0px" left="600px" />
+      </div>
       <h1 className="my-booking-text">My Bookings</h1>
+
       {bookings.map((item, index) => (
         <div key={index} className="booking-container">
           <div className="booking-movie-image">
             <img
+              src={image_base_url + item.show.movie.poster_path}
+              alt="poster"
               className="booking-image"
-              src={item.show.movie.poster_path}
-              alt="movie-poster"
             />
             <div className="booking-title-container">
               <p className="booking-title">{item.show.movie.title}</p>
@@ -50,30 +64,35 @@ const MyBooking = () => {
               </p>
             </div>
           </div>
+
           <div className="booking-amount-container">
-            <div className="price-header">
+            <div className="price-tag-header">
               <p className="booking-amount">
                 {currency}
                 {item.amount}
               </p>
-              {!item.isPaid && <button className="pay-button">Pay Now</button>}
+              {!item.isPaid && (
+                <Link to={item.paymentLink} className="pay-button">
+                  Pay Now
+                </Link>
+              )}
             </div>
             <div className="total-seat-container">
               <p>
-                <span className="seat-count">Total Tickets : </span>{" "}
+                <span className="seat-counts">Total Tickets:</span>{" "}
                 {item.bookedSeats.length}
               </p>
-
               <p>
-                <span className="seat-count">Seat Number :</span>{" "}
+                <span className="seat-counts">Seat Number:</span>{" "}
                 {item.bookedSeats.join(", ")}
               </p>
-
             </div>
           </div>
         </div>
       ))}
     </div>
+  ) : (
+    <Loading />
   );
 };
 

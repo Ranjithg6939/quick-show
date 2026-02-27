@@ -21,7 +21,7 @@ const TrailersSection = () => {
             width: "95%",
             height: "480px",
             playerVars: {
-              autoplay: 1,
+              autoplay: 0,
               controls: 0,
             },
           }}
@@ -29,14 +29,13 @@ const TrailersSection = () => {
       </div>
 
       <div className="video-image">
-        {dummyTrailers.map((trailer) => (
-          <div onClick={()=>setCurrentTrailer(trailer)} className="thumbnail" key={trailer.id}>
-            <img
-              src={trailer.image}
-              alt="trailer"
-              className="trailer-image"
-              onClick={() => setCurrentTrailer(trailer)}
-            />
+        {dummyTrailers.map((trailer, index) => (
+          <div
+            key={index}
+            onClick={() => setCurrentTrailer(trailer)}
+            className="thumbnail"
+          >
+            <img src={trailer.image} alt="trailer" className="trailer-image" />
             <PlayCircle strokeWidth={1.6} className="play-icon" />
           </div>
         ))}

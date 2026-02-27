@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { MenuIcon, SearchIcon, TicketPlus, XIcon } from "lucide-react";
-
-import "./index.css";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
+import { useAppContext } from "../../context/AppContext";
+import "./index.css";
 
 const Navbar = () => {
 
@@ -13,6 +13,8 @@ const Navbar = () => {
   const {openSignIn} =useClerk()
 
   const navigate = useNavigate()
+
+  const { favoriteMovies = [] } = useAppContext(); 
 
   return (
     <div className="navbar-container">
@@ -66,16 +68,18 @@ const Navbar = () => {
         >
           Release
         </Link>
-        <Link
-          onClick={() => {
-            window.scrollTo(0, 0);
-            SetIsOpen(false);
-          }}
-          className="menu-link"
-          to="/favorite"
-        >
-          Favourite
-        </Link>
+        {favoriteMovies.length > 0 && (
+          <Link
+            onClick={() => {
+              window.scrollTo(0, 0);
+              SetIsOpen(false);
+            }}
+            className="menu-link"
+            to="/favorite"
+          >
+            Favorites
+          </Link>
+        )}
       </div>
 
       <div className="nav-item">

@@ -4,10 +4,12 @@ import {ArrowRight} from 'lucide-react'
 import { useNavigate } from "react-router-dom";
 import BlurCircle from '../BlurCircle';
 import MovieCard from '../MovieCard';
-import { dummyShowsData } from '../../assets/assets';
+import { useAppContext } from '../../context/AppContext';
 
 const FeaturedSection = () => {
+
     const navigate = useNavigate()
+    const {shows} = useAppContext()
   return (
     <div className="feature-container">
       <div className="feature-header">
@@ -21,7 +23,7 @@ const FeaturedSection = () => {
         </button>
       </div>
       <div className='movie-cards'>
-        {dummyShowsData.slice(0,4).map((show)=>(
+        {shows.slice(0,4).map((show)=>(
           <MovieCard key={show._id} movie={show}/>
         ))}
 

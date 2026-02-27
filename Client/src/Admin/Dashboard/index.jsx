@@ -13,9 +13,13 @@ import './index.css'
 import Title from '../../Components/AdminMaster/Title';
 import BlurCircle from '../../Components/BlurCircle';
 import { DateFormat } from '../../Library/DateFormate';
+import { useAppContext } from '../../context/AppContext';
+import toast from 'react-hot-toast';
 
 
 const Dashboard = () => {
+
+  const { axios, getToken, user, image_base_url } = useAppContext();
 
   const currency = import.meta.env.VITE_CURRENCY
 
@@ -38,13 +42,27 @@ const Dashboard = () => {
   ]
 
   const fetchDashboardData = async () => {
-    setDashboardData(dummyDashboardData)
-    setLoading(false)
+    try {
+      const { data } =await axios.get("/api/admin/dashboard", {
+        headers: { Authorization: `Bearer ${await getToken()}` }})
+        if(data.success){
+          setDashboardData(data.dashboardData)
+          setLoading(false)
+        }else{
+          toast.error(data.message)
+        }
+    } catch (error) {
+      toast.error("Error fetching dashboard data",error)
+      
+    }
+    
   };
 
   useEffect(() => {
-    fetchDashboardData()
-  },[])
+    if(user){
+       fetchDashboardData();
+    }
+  },[user])
 
 
   return !loading ? (
@@ -69,7 +87,7 @@ const Dashboard = () => {
         <BlurCircle top='100px' left='-10%'/>
         {dashboardData.activeShows.map((show)=>(
           <div key={show._id} className='active-show-header'>
-            <img src={show.movie.poster_path} alt='poster' className='poster-image'/>
+            <img src={image_base_url+show.movie.poster_path} alt='poster' className='poster-image'/>
             <p className='show-movie-title'>{show.movie.title}</p>
             <div className='currency-container'>
               <p className='show-price'>{currency}{show.showPrice}</p>

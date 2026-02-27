@@ -3,8 +3,11 @@ import "./index.css";
 import { useNavigate } from "react-router-dom";
 import { StarIcon } from "lucide-react";
 import TimeFormate from "../../Library/TimeFormate";
+import { useAppContext } from "../../context/AppContext";
 
 const MovieCard = ({ movie }) => {
+
+  const { image_base_url } = useAppContext();
   const navigate = useNavigate();
 
   return (
@@ -15,7 +18,7 @@ const MovieCard = ({ movie }) => {
           window.scrollTo(0, 0);
         }}
         className="movie-image"
-        src={movie.backdrop_path}
+        src={image_base_url+movie.backdrop_path}
         alt="movie-image"
       />
       <p className="movie-title">{movie.title}</p>

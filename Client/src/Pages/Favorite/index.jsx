@@ -1,20 +1,22 @@
 import React from "react";
-import { dummyShowsData } from "../../assets/assets";
 import MovieCard from "../../Components/MovieCard";
 import BlurCircle from "../../Components/BlurCircle";
-
+import { useAppContext } from "../../context/AppContext";
 import "./index.css";
 
 const Favorite = () => {
-  return dummyShowsData.length > 0 ? (
+  const { favoriteMovies = [] } = useAppContext(); 
+
+  return favoriteMovies.length > 0 ? (
     <div className="movie-now-show">
       <BlurCircle top="150px" left="0px" />
       <BlurCircle bottom="50px" right="50px" />
 
       <h1 className="nowshoing-heading">My Favorite Movie</h1>
+
       <div className="showing-movie">
-        {dummyShowsData.map((movie) => (
-          <MovieCard movie={movie} Key={movie._id} />
+        {favoriteMovies.map((movie) => (
+          <MovieCard key={movie._id} movie={movie} />  
         ))}
       </div>
     </div>

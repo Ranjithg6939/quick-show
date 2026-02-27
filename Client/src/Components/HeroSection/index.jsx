@@ -13,7 +13,7 @@ const HeroSection = () => {
     <div className="hero-container">
       <img className="marvel-logo" src={assets.marvelLogo} alt="marvel-logo" />
 
-      <h1 className="movie-name">
+      <h1 className="movie-title-name">
         Guardians <br /> of the Galaxy
       </h1>
 
