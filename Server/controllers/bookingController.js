@@ -50,6 +50,8 @@ export const createBooking = async (req, res) => {
     showData.markModified("occupiedSeats");
     await showData.save();
 
+    const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
+
     const line_items = [
       {
         price_data: {
@@ -57,7 +59,7 @@ export const createBooking = async (req, res) => {
           product_data: {
             name: showData.movie.title,
           },
-          unit_amount: booking.amount * 100,
+          unit_amount: Math.floor(booking.amount) * 100,
         },
         quantity: 1,
       },

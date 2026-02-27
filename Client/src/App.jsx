@@ -64,7 +64,6 @@ const App = () => {
         <Route path="/movies/:id/:date" element={<SeatLayout />} />
         <Route path="/my-booking" element={<MyBooking />} />
         <Route path="/loading/:nextUrl" element={<Loading />} />
-
         <Route path="/favorite" element={<Favorite />} />
         <Route
           path="/admin/*"

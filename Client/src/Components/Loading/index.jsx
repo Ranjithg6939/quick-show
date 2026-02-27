@@ -6,16 +6,14 @@ const Loading = () => {
   const { nextUrl } = useParams(); 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (nextUrl) {
-      const timer = setTimeout(() => {
-        navigate("/" + nextUrl);
-      }, 8000);
+useEffect(()=>{
+  if(nextUrl){
+    setTimeout(()=>{
+      navigate('/'+nextUrl)
 
-      return () => clearTimeout(timer);
-    }
-  }, [nextUrl, navigate]); 
-
+    },8000)
+  }
+},[])
   return (
     <div className="loading-container">
       <div className="loading-spinner"></div>
