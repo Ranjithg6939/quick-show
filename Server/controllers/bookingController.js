@@ -44,12 +44,11 @@ export const createBooking = async (req, res) => {
       bookedSeats: selectedSeats,
     });
 
-    selectedSeats.forEach((seat) => {
-      showData.occupiedSeats[seat] = userId;
-    });
-
-    showData.markModified("occupiedSeats");
-    await showData.save();
+   selectedSeats.forEach((seat) => {
+     showData.occupiedSeats.set(seat, userId); 
+   });
+   showData.markModified("occupiedSeats");
+   await showData.save();
 
     const line_items = [
       {

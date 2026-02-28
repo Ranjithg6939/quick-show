@@ -50,28 +50,29 @@ const syncUserUpdation = inngest.createFunction(
 );
 
 const releseSeatsAndDeleteBooking = inngest.createFunction(
-  {id:'relese-seats-delete-booking'},
-  {event: "app/checkpayment"},
-  async ({event,step}) =>{
-    const tenMninutesLater = new (Date.now() + 10 * 10 * 1000)
-    await step.sleepUntil('await-for-10-minutes', tenMninutesLater)
+  { id: "relese-seats-delete-booking" },
+  { event: "app/checkpayment" },
+  async ({ event, step }) => {
+    // Wait 10 minutes
+    const tenMinutesLater = Date.now() + 10 * 60 * 1000;
+    await step.sleepUntil("await-for-10-minutes", tenMinutesLater);
 
-    await step.run('check-payment-status', async ()=>{
-      const bookingId = event.data.bookingId
-      const booking = await Booking.findById(bookingId)
-
-      if(!booking.isPaid){
-        const show = await Show.findById(booking.show)
-        booking.bookedSeats.forEach(()=>{
-          delete show.occupiedSeats[seat]
-        })
-        show.markModified('occupiedSeats')
-        await show.save()
-        await Booking.findByIdAndDelete(booking._id)
+    await step.run("check-payment-status", async () => {
+      const bookingId = event.data.bookingId;
+      const booking = await Booking.findById(bookingId);
+      if (booking && !booking.isPaid) {
+        const show = await Show.findById(booking.show);
+        if (show) {
+          booking.bookedSeats.forEach((seat) => {
+            show.occupiedSeats.delete(seat); 
+          });
+          show.markModified("occupiedSeats");
+          await show.save();
+        }
+        await Booking.findByIdAndDelete(booking._id);
       }
-
-    })
-  }
-)
+    });
+  },
+);
 
 export const functions = [syncUserCreation, syncUserDeletion, syncUserUpdation,releseSeatsAndDeleteBooking];
