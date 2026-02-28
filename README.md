@@ -342,12 +342,6 @@ vercel --prod
 
 ---
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/elyse502/QuickShow/blob/main/LICENSE) file for details.
-
----
-
 ## Support
 
 For support, email ranjithg7474@gamil.com or create an issue in the GitHub repository.
