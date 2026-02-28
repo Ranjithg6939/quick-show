@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
 
 # QUICKSHOW 🎬🍿🎥
@@ -369,3 +370,6 @@ For any questions or support, please contact:
 [⬆ Back to Top](#table-of-contents)
 
 </div>
+=======
+
+>>>>>>> 2e62ad7d49b7ce832bedda1456992da70f01628f
