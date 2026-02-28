@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { ArrowRightIcon, ClockIcon } from "lucide-react";
 import toast from "react-hot-toast";
@@ -20,7 +20,7 @@ const SeatLayout = () => {
   ];
 
   const { id, date } = useParams();
-  const navigate = useNavigate();
+
 
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedTime, setSelectedTime] = useState(null);

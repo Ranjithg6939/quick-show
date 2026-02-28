@@ -1,3 +1,4 @@
+import { inngest } from "../inngest/index.js";
 import Booking from "../models/Booking.js";
 import Show from "../models/Show.js";
 import Stripe from "stripe";
@@ -50,8 +51,6 @@ export const createBooking = async (req, res) => {
     showData.markModified("occupiedSeats");
     await showData.save();
 
-    const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
-
     const line_items = [
       {
         price_data: {
@@ -59,7 +58,7 @@ export const createBooking = async (req, res) => {
           product_data: {
             name: showData.movie.title,
           },
-          unit_amount: Math.floor(booking.amount) * 100,
+          unit_amount: booking.amount * 100,
         },
         quantity: 1,
       },
@@ -78,6 +77,13 @@ export const createBooking = async (req, res) => {
 
     booking.paymentLink = session.url;
     await booking.save();
+
+    await inngest.send({
+      name: 'app/checkpayment',
+      data: {
+        bookingId: booking._id.toString()
+      }
+    })
 
     res.json({ success: true, url: session.url });
   } catch (error) {
