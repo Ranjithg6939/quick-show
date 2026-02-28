@@ -177,7 +177,7 @@ Before running this application, make sure you have the following installed:
 
 2. **Access the application**
    - Frontend: `http://localhost:5173`
-   - Backend API: `http://localhost:5000`
+   - Backend API: `http://localhost:3000`
 
 3. **Admin Access**
    - Create an admin account through the API or manually in the database
