@@ -23,21 +23,29 @@ export const stripeWebhooks = async (req, res) => {
       case "payment_intent.succeeded": {
         const paymentIntent = event.data.object;
 
+        // List checkout sessions that used this paymentIntent
         const sessionList = await stripeInstance.checkout.sessions.list({
           payment_intent: paymentIntent.id,
         });
 
-        const session = sessionList.data[0];
-        const { bookingId } = session.metadata;
+        const session = sessionList.data.find((s) => s.metadata?.bookingId);
+
+        if (!session) {
+          console.log("No session found for paymentIntent:", paymentIntent.id);
+          return res.status(400).send("No session found");
+        }
+
+        const bookingId = session.metadata.bookingId;
 
         await Booking.findByIdAndUpdate(bookingId, {
           isPaid: true,
           paymentLink: "",
         });
 
+        console.log("Booking marked as paid:", bookingId);
+
         break;
       }
-
       default:
         console.log("Unhandled event type:", event.type);
     }

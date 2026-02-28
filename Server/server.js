@@ -14,31 +14,29 @@ import { stripeWebhooks } from "./controllers/stripeWebhook.js";
 const app = express();
 const port = 3000;
 
-await connectDB()
+await connectDB();
 
-//stripe webhooks Route
-app.use(
+//  Stripe webhook route (must be before express.json)
+app.post(
   "/api/stripe",
   express.raw({ type: "application/json" }),
   stripeWebhooks,
 );
 
-// Middleware
+//  Middleware for all other routes
 app.use(express.json());
 app.use(cors());
 app.use(clerkMiddleware());
 
-// API Routes
+//  API routes
 app.get("/", (req, res) => res.send("Server is Live!"));
 app.use("/api/inngest", serve({ client: inngest, functions }));
-app.use('/api/show', showRouter)
+app.use("/api/show", showRouter);
 app.use("/api/booking", bookingRouter);
-app.use('/api/admin', adminRouter)
-app.use('/api/user', userRouter)
+app.use("/api/admin", adminRouter);
+app.use("/api/user", userRouter);
 
-
-
-// Start server
+//  Start server
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
