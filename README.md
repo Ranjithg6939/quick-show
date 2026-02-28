@@ -144,7 +144,7 @@ Before running this application, make sure you have the following installed:
 
    ```env
    # 💱 Currency Symbol
-   VITE_CURRENCY=$
+   VITE_CURRENCY=₹
 
    # 🔐 Clerk Authentication (Public Key for Frontend)
    VITE_CLERK_PUBLISHABLE_KEY=your-clerk-publishable-key
